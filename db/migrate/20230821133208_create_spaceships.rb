@@ -5,9 +5,9 @@ class CreateSpaceships < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :model
       t.text :description
-      t.string :picture
+      t.string :picture_url
       t.boolean :available
-      t.integer :daily_rate
+      t.float :daily_rate
       t.references :users
 
       t.timestamps
