@@ -10,8 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_21_133208) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "spaceships", force: :cascade do |t|
+    t.string "name"
+    t.string "model"
+    t.text "description"
+    t.string "picture"
+    t.boolean "available"
+    t.integer "daily_rate"
+    t.bigint "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_spaceships_on_users_id"
+  end
 
 end
