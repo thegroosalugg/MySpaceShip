@@ -1,6 +1,6 @@
 class SpaceshipsController < ApplicationController
-
   before_action :set_spaceship, only: %i[show edit update]
+
   def index
     @spaceships = Spaceship.all
   end
