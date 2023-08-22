@@ -1,18 +1,16 @@
 class BookingsController < ApplicationController
   def new
-    @bookings = Bookings.new
+    @booking = Booking.new
   end
   
   def index
-
-    @bookings = Bookings.all
+    @booking = Booking.all
   end
 
   def create
-
-    @bookings = Bokings.new(bookings_params)
-    if @Bookings.save
-      redirect_to bookings_path(@bookings)
+    @booking = Booking.new(bookings_params)
+    if @booking.save
+      redirect_to bookings_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,11 +19,10 @@ class BookingsController < ApplicationController
   private
 
   def set_bookings
-    @bookings = Bookings.find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 
   def bookings_params
     params.require(:booking).permit(:name, :photo)
   end
-
 end
