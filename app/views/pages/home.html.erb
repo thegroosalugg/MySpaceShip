@@ -1,9 +1,9 @@
 <h1>Welcome to Space, may I take your order?</h1>
 
 <div class="container overflow-auto">
-  <div class="d-flex flex-row flex-wrap">
+  <div class="row">
     <% @spaceships.each do |spaceship| %>
-      <div class="col-md-4">
+      <div class="col-md-6 col-lg-4">
         <div class="card m-4" style="background-color: #F6F4EB; border-radius: 10px; min-width: 300px;">
           <div class="d-flex flex-column" style="background-color: #222; border-radius: 10px; color: #FFF;">
             <%= image_tag spaceship.photo, class: "card-img-top spaceship-image" %>
@@ -12,16 +12,16 @@
               <p class="card-text p-3 my-1 text-center" style="font-size: 13px;"><%= spaceship.description %></p>
             </div>
 
-            <div class="d-flex flex-row flex-wrap justify-content-center mb-2">
+            <div class="d-flex justify-content-center mb-2">
               <div class="col-3"></div>
-              <div class="d-flex col-6 justify-content-center align-items-center">
+              <div class="d-flex col-6 justify-content-center">
                 <i class="fa-solid fa-bitcoin-sign mx-1"></i>
                 <i class="fa-brands fa-cc-visa mx-1"></i>
                 <i class="fa-brands fa-cc-mastercard mx-1"></i>
                 <i class="fa-brands fa-cc-paypal mx-1"></i>
                 <i class="fa-brands fa-cc-apple-pay mx-1"></i>
               </div>
-              <div class="col-3" style="font-size: 12px;">
+              <div class="col-3" style="font-size: 12px; margin-left: 10px;">
                 <i class="fa-solid fa-dollar-sign"></i >
                 <%= spaceship.daily_rate %>
               </div>
