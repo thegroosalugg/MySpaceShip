@@ -10,3 +10,4 @@ class Spaceship < ApplicationRecord
   validates :daily_rate, presence: true
   # validates :available, presence: true
 end
+ 
