@@ -33,12 +33,21 @@
 .card {
   box-shadow: 3px 3px 5px rgba(147, 153, 158, 0.8);
 }
-h6, .daily-rate {
-  font-family: 'Black Ops One', sans-serif;
-}
-h1 {
+h1, h2, h3, h4, h5, h6, .daily-rate, .nav-link, form, a {
   font-family: 'Black Ops One', sans-serif;
 }
 p {
   font-family: 'ADLaM Display', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #EEEEEE;
+  transition: 0.5s;
+}
+input[type="submit"][name="commit"] {
+  color: #EEEEEE;
+  transition: 0.5s;
+}
+a:hover, input[type="submit"][name="commit"]:hover {
+  color: #D65A31;
 }
