@@ -60,3 +60,12 @@ input[type="submit"][name="commit"] {
 a:hover, input[type="submit"][name="commit"]:hover {
   color: #D65A31;
 }
+/* Apply styles to link_to elements */
+.card {
+  transition: transform 0.3s ease; /* Smooth transition effect */
+}
+
+/* Scale up the card on hover */
+.card:hover {
+  transform: scale(1.05); /* Increase the scale factor for desired effect */
+}
