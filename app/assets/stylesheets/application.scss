@@ -23,14 +23,10 @@
   background: transparent; /* Hide the thumb */
 }
 .spaceship-image {
-  width: 220px;
+  width: 100%;
   height: auto;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px 10px 0 0;
 }
-.cards {
-  display: grid;
-  flex-wrap: wrap;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  padding: 10px;
+.card {
+  box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.2);
 }
