@@ -31,9 +31,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_152801) do
     t.string "name"
     t.string "model"
     t.text "description"
-    t.string "picture"
+    t.string "picture_url"
     t.boolean "available"
-    t.integer "daily_rate"
+    t.float "daily_rate"
     t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
