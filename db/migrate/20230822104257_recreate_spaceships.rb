@@ -1,6 +1,5 @@
-class CreateSpaceships < ActiveRecord::Migration[7.0]
+class RecreateSpaceships < ActiveRecord::Migration[7.0]
   def change
-
     create_table :spaceships do |t|
       t.string :name
       t.string :model
@@ -8,7 +7,7 @@ class CreateSpaceships < ActiveRecord::Migration[7.0]
       t.string :picture_url
       t.boolean :available
       t.float :daily_rate
-      t.references :users
+      t.references :user
 
       t.timestamps
     end
