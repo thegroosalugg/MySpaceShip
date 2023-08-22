@@ -13,6 +13,9 @@ require 'open-uri'
 #   password: "123456"
 # )
 
+User.destroy_all
+Spaceship.destroy_all
+
 12.times do
   User.create(
   email: Faker::Internet.email,
