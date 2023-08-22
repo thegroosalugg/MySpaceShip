@@ -7,7 +7,7 @@ class RecreateSpaceships < ActiveRecord::Migration[7.0]
       t.string :picture_url
       t.boolean :available
       t.float :daily_rate
-      t.references :user
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
