@@ -11,6 +11,10 @@
 @import "components/index";
 @import "pages/index";
 
+// Google Fonts
+
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Black+Ops+One&family=Geologica:wght@200&family=Montserrat:wght@200&display=swap');
+
 ::-webkit-scrollbar {
   width: 0px; /* Width of the scrollbar */
 }
@@ -27,5 +31,14 @@
   border-radius: 10px 10px 0 0;
 }
 .card {
-  box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.2);
+  box-shadow: 3px 3px 5px rgba(147, 153, 158, 0.8);
+}
+h6, .daily-rate {
+  font-family: 'Black Ops One', sans-serif;
+}
+h1 {
+  font-family: 'Black Ops One', sans-serif;
+}
+p {
+  font-family: 'ADLaM Display', sans-serif;
 }
