@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-
-  resources :spaceships, only: %i[index show new create]
+  resources :spaceships, only: %i[index show new create edit update]
 
   get 'bookings/new'
   get 'bookings/create'
