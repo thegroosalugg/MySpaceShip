@@ -1,6 +1,6 @@
 class Booking < ApplicationRecord
   belongs_to :user
-  belongs_to :spaceships
+  belongs_to :spaceship
 
   enum status: [ :pending, :rejected, :accepted ]
 
