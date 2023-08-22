@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :spaceships, only: %i[index show new create]
+  resources :spaceships, only: %i[index show new create edit update]
 
   devise_for :users
   root to: "pages#home"
