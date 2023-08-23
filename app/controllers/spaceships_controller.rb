@@ -1,10 +1,11 @@
 class SpaceshipsController < ApplicationController
+  before_action :set_spaceship, only: %i[show edit update]
+
   def index
     @spaceships = Spaceship.all
   end
 
   def show
-    @spaceship = Spaceship.find(params[:id])
   end
 
   def new
@@ -26,13 +27,22 @@ class SpaceshipsController < ApplicationController
   end
 
   def update
+    @spaceship.update(spaceship_params)
+    if @spaceship.save
+      redirect_to spaceship_path(@spaceship)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def delete
   end
 
-
   private
+
+  def set_spaceship
+    @spaceship = Spaceship.find(params[:id])
+  end
 
   def spaceship_params
     params.require(:spaceship).permit(:name, :model, :description)
