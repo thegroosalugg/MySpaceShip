@@ -7,7 +7,6 @@ class Spaceship < ApplicationRecord
   validates :model, presence: true
   validates :description, presence: true
   # validates :picture_url, presence: true
-  validates :daily_rate, presence: true
+  # validates :daily_rate, presence: true
   # validates :available, presence: true
 end
- 
