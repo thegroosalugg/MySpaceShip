@@ -1,11 +1,8 @@
-<h1>Bookings</h1>
-<div id="bookings">
-  <% @booking.each do | booking| %>
-  <%= render "form", booking: @booking %>
-    <p>
-    <%= link_to "Show this Booking", booking_path(booking) %>
-    </p>
+<h1>Your upcoming space events</h1>
+<div>
+  <% @bookings.each do |booking| %>
+  <% spaceship = Spaceship.find(booking.spaceship_id)%>
+  <h3><%= spaceship.name%>
+  <%= link_to "View details", booking_path(booking), class:"btn btn-primary"  %>
   <% end %>
-
 </div>
-<%= link_to "New Booking", new_booking_path %>

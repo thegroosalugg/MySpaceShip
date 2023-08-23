@@ -1,3 +1,7 @@
-<h1>Bookings#new</h1>
-<h1>Here is the new booking </h1>
-<%= render "form", booking: @booking %>
+<h2>We're glad you want to make a booking for</h1>
+<h1><%= @spaceship.name %></h1>
+<h2>Please fill out the form to proceed</h2>
+
+<p>
+  <%= render "form", booking: @booking %>
+</p>
