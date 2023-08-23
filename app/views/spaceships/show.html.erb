@@ -1,7 +1,10 @@
-<div class="show-page-content"
+<div class="show-page-content d-flex flex-column col-lg-12"
   style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('<%= url_for(@spaceship.photo) %>');">
-  <h1><%= @spaceship.name %><%= @spaceship.model %></h1>
-  <p><%= @spaceship.description %></p>
-  <h6><%= @spaceship.daily_rate %></h6>
+  <h1 class="mt-5"><%= @spaceship.name %><%= @spaceship.model %></h1>
+  <p style="margin-top: auto; font-size: 20px;"><%= @spaceship.description %></p>
+  <div class="container mt-auto mb-3">
+    <h6> Price per day: <i class="fa-solid fa-dollar-sign"></i><%= @spaceship.daily_rate %></h6>
+    <%= render "bookings/form", booking: @booking %>
+  </div>
 </div>
