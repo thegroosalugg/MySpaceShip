@@ -73,9 +73,15 @@ a:hover, input[type="submit"][name="commit"]:hover {
 .space-card, .nav-link, .navbar-brank {
   transition: transform 0.3s ease; /* Smooth transition effect */
 }
-
+.nav-link {
+  color: white;
+  &:hover {
+    color: #D65A31
+  };
+}
 /* Scale up the card on hover */
 .space-card:hover, .nav-link:hover, .navbar-brand:hover {
+
   transform: scale(1.05); /* Increase the scale factor for desired effect */
 }
 .show-page-content {
