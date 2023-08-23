@@ -1,7 +1,7 @@
 class Spaceship < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   validates :name, presence: true #, uniqueness: true
   validates :model, presence: true
@@ -10,3 +10,4 @@ class Spaceship < ApplicationRecord
   validates :daily_rate, presence: true
   # validates :available, presence: true
 end
+ 
