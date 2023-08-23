@@ -80,6 +80,12 @@ a:hover, input[type="submit"][name="commit"]:hover {
     color: #D65A31
   };
 }
+.btn {
+  border-radius: 15px;
+  &:hover {
+    background-color: white;
+  };
+}
 /* Scale up the card on hover */
 .space-card:hover, .nav-link:hover, .navbar-brand:hover {
 
