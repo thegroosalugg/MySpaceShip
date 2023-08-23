@@ -81,8 +81,11 @@ a:hover, input[type="submit"][name="commit"]:hover {
 .show-page-content {
   background-size: cover;
   background-position: center;
-  min-height: 90vh;
+  min-height: 95vh;
   min-width: 150vh;
   border-radius: 10px;
   text-shadow: 2px 2px 3px black;
+}
+.form-inputs {
+  padding: 20px;
 }
