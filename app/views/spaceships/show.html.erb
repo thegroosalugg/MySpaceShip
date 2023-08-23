@@ -3,6 +3,6 @@
     url('<%= url_for(@spaceship.photo) %>');">
   <h1><%= @spaceship.name %><%= @spaceship.model %></h1>
   <p><%= @spaceship.description %></p>
-  <h6><%= @spaceship.daily_rate %></h6>
+  <h6> Price per day: <i class="fa-solid fa-dollar-sign"></i><%= @spaceship.daily_rate %></h6>
   <%= render "bookings/form", booking: @booking %>
 </div>
