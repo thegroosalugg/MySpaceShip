@@ -66,6 +66,6 @@ a:hover, input[type="submit"][name="commit"]:hover {
 }
 
 /* Scale up the card on hover */
-.space-card:hover {
+.space-card:hover, .nav-link:hover {
   transform: scale(1.05); /* Increase the scale factor for desired effect */
 }
