@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: %i[show edit update]
   skip_before_action :authenticate_user!, only: :show
@@ -17,6 +19,8 @@ class SpaceshipsController < ApplicationController
   def create
     @spaceship = Spaceship.new(spaceship_params)
     @spaceship.user = current_user
+    file = URI.open("https://res.cloudinary.com/ddynviqg1/image/upload/v1692700093/Spaceships/thomas-woodward-03_yzxne7.jpg")
+    @spaceship.photo.attach(io: file, filename: "#{@spaceship.name}.jpg", content_type: "image/jpg")
 
     if @spaceship.save
       redirect_to spaceship_path(@spaceship)
