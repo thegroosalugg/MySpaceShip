@@ -1,4 +1,14 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = Booking.all
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+    @spaceship = Spaceship.find(@booking.spaceship_id)
+  end
+
+
   def new
     @booking = Booking.new
     @spaceship = Spaceship.find(params["spaceship_id"])
@@ -8,20 +18,14 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @spaceship = Spaceship.find(params["spaceship_id"])
 
-    user = current_user
-    spaceship_id = @spaceship.id.to_i
-
     @booking.user_id = current_user.id
-    @booking.spaceship_id = spaceship_id
+    @booking.spaceship_id = @spaceship.id.to_i
 
     if @booking.save
-      redirect_to spaceships_bookings_path(@booking)
+      redirect_to bookings_path
     else
       render :new, status: :unprocessable_entity
     end
-
-    
-
   end
 
   private
