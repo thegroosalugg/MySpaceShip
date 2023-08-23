@@ -1,8 +1,8 @@
-<h1>Spaceships#show</h1>
-<p>Book my spaceship, it's cool!</p>
-
-<h1><%= @spaceship.name %></h1>
-<h2><%= @spaceship.daily_rate %></h2>
-<h2><%= @spaceship.model %></h2>
-
-<%= image_tag @spaceship.photo, style: "background-image: url('#{@spaceship.photo}');" %>
+<div class="show-page-content" style="background-image: url('<%= url_for(@spaceship.photo) %>');">
+  <h1>Spaceships#show</h1>
+  <p>Book my spaceship, it's cool!</p>
+  <h1><%= @spaceship.name %></h1>
+  <h2><%= @spaceship.model %></h2>
+  <h2><%= @spaceship.description %></h2>
+  <h2><%= @spaceship.daily_rate %></h2>
+</div>
