@@ -73,7 +73,7 @@ a:hover, input[type="submit"][name="commit"]:hover {
 .space-card, .nav-link, .navbar-brank {
   transition: transform 0.3s ease; /* Smooth transition effect */
 }
-.nav-link {
+.nav-link, .btn-secondary {
   color: white;
   transition: 0.5s;
   &:hover {
