@@ -1,8 +1,7 @@
-<h1>Spaceships#show</h1>
-<p>Book my spaceship, it's cool!</p>
-
-<h1><%= @spaceship.name %></h1>
-<h2><%= @spaceship.daily_rate %></h2>
-<h2><%= @spaceship.model %></h2>
-
-<%= link_to "Edit" ,edit_spaceship_path(@spaceship), class:"btn btn-primary"%>
+<div class="show-page-content"
+  style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url('<%= url_for(@spaceship.photo) %>');">
+  <h1><%= @spaceship.name %><%= @spaceship.model %></h1>
+  <p><%= @spaceship.description %></p>
+  <h6><%= @spaceship.daily_rate %></h6>
+</div>

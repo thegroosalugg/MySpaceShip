@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light bg-dark">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "logo.png", class: "w-25" %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo.png", class: "w-25", style: "filter: invert(1) brightness(100);" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,8 +28,9 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <%= link_to "Login", new_user_session_path, class: "nav-link text-white" %>
+            <i class="fa-brands fa-space-awesome fa-flip text-white"></i>
           </li>
         <% end %>
       </ul>

@@ -11,6 +11,10 @@
 @import "components/index";
 @import "pages/index";
 
+// Google Fonts
+
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Black+Ops+One&family=Geologica:wght@200&family=Montserrat:wght@200&display=swap');
+
 ::-webkit-scrollbar {
   width: 0px; /* Width of the scrollbar */
 }
@@ -22,15 +26,63 @@
 ::-webkit-scrollbar-thumb {
   background: transparent; /* Hide the thumb */
 }
-.spaceship-image {
-  width: 220px;
-  height: auto;
-  border-radius: 10px 0 0 10px;
+
+// code below incase we need to add gradient
+
+// body {
+//   background-image: linear-gradient(
+//     rgba(0, 0, 0, 0.4),
+//     rgba(10, 10, 10, 0.4)
+//   ), url('backgrounds/wallpaper.jpg');
+//   background-size: cover;
+//   background-position: center center;
+// }
+
+body {
+  background-image: url('backgrounds/wallpaper2.jpg');
+  background-size: cover;
+  background-position: center center;
 }
-.cards {
-  display: grid;
-  flex-wrap: wrap;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  padding: 10px;
+
+.spaceship-image {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+.card {
+  box-shadow: 2px 2px 4px rgb(118, 120, 121);
+}
+h1, h2, h3, h4, h5, h6, .daily-rate, .nav-link, form, a {
+  font-family: 'Black Ops One', sans-serif;
+}
+p {
+  font-family: 'ADLaM Display', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #EEEEEE;
+  transition: 0.5s;
+}
+input[type="submit"][name="commit"] {
+  color: #EEEEEE;
+  transition: 0.5s;
+}
+a:hover, input[type="submit"][name="commit"]:hover {
+  color: #D65A31;
+}
+/* Apply styles to link_to elements */
+.space-card, .nav-link, .navbar-brank {
+  transition: transform 0.3s ease; /* Smooth transition effect */
+}
+
+/* Scale up the card on hover */
+.space-card:hover, .nav-link:hover, .navbar-brand:hover {
+  transform: scale(1.05); /* Increase the scale factor for desired effect */
+}
+.show-page-content {
+  background-size: cover;
+  background-position: center;
+  min-height: 90vh;
+  min-width: 150vh;
+  border-radius: 10px;
+  text-shadow: 2px 2px 3px black;
 }
