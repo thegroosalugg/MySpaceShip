@@ -75,6 +75,7 @@ a:hover, input[type="submit"][name="commit"]:hover {
 }
 .nav-link {
   color: white;
+  transition: 0.5s;
   &:hover {
     color: #D65A31
   };
