@@ -1,5 +1,6 @@
 class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: %i[show edit update]
+  skip_before_action :authenticate_user!, only: :show
 
   def index
     @spaceships = Spaceship.all
