@@ -1,6 +1,10 @@
+<div class="show-page-content d-flex flex-column justify-content-center align-items-center"
+  style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('<%= url_for(@spaceship.photo) %>');">
+  <h1 class="p-3">Your booking of <%= @spaceship.name %></h1>
 
-<h1 class="p-3">Your booking of <%= @spaceship.name %></h1>
-<h6>From: <%= @booking.start_date %> to: <%= @booking.end_date %></h6>
-<% days_booked = (@booking.end_date - @booking.start_date).to_i + 1 %>
-<% total_invoice = days_booked * @spaceship.daily_rate %>
-<p>Total Invoice Amount: <%= total_invoice %></p>
+  <h6>From: <%= @booking.start_date %> to: <%= @booking.end_date %></h6>
+  <p>The Daily Rate: <%= @spaceship.daily_rate %></p>
+  <p>Total Invoice Amount: <%= (@booking.end_date - @booking.start_date).to_i + 1 * @spaceship.daily_rate %></p>
+
+</div>
