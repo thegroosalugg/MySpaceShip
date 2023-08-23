@@ -1,2 +1,6 @@
-<h1>Your booking of <%= @spaceship.name %></h1>
-<h1>From: <%=@booking.start_date %> to: <%= @booking.end_date %></h1>
+
+<h1 class="p-3">Your booking of <%= @spaceship.name %></h1>
+<h6>From: <%= @booking.start_date %> to: <%= @booking.end_date %></h6>
+<% days_booked = (@booking.end_date - @booking.start_date).to_i + 1 %>
+<% total_invoice = days_booked * @spaceship.daily_rate %>
+<p>Total Invoice Amount: <%= total_invoice %></p>
