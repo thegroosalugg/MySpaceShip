@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :spaceships
-  has_many :bookings, through: :spaceships
+  has_many :bookings
 end

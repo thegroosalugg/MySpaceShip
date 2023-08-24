@@ -9,11 +9,11 @@ class PagesController < ApplicationController
     # we want to display all of our ships
     @spaceships = Spaceship.where(user_id: current_user.id)
 
-
     # we want to display all our bookings (outgoing) PLUS their status
     @my_bookings = Booking.where(user_id: current_user.id)
+    # raise
 
-     # we want to display all the booking requests that a user reveived from other users (incoming) + their status
-    @my_spaceships_bookings = Booking.where()
+    # we want to display all the booking requests that a user reveived from other users (incoming) + their status
+    @my_spaceships_bookings = Booking.joins(:spaceship).where(spaceships: { user_id: current_user.id })
   end
 end
