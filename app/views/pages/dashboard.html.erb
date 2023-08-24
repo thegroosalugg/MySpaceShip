@@ -40,15 +40,15 @@
               </span>
 
                 <h6>Status:</h6>
-                <% if booking.status == "accepted" %>
-                 <span class="text-success">
-                <% elsif booking.status == "rejected" %>
-                 <span class="text-danger">
-                <% else booking.status == "rejected" %>
-                <span style="color: #FF6000;">
-                <% end %>
+                  <% if booking.status == "accepted" %>
+                  <span class="text-success">
+                  <% elsif booking.status == "rejected" %>
+                  <span class="text-danger">
+                  <% else booking.status == "rejected" %>
+                  <span style="color: #FF6000;">
+                  <% end %>
                 <h6><%= booking.status %></h6>
-              </span>
+                 </span>
             </span>
             <span style="color: #FAF0E6;">
               <p style="margin-bottom: 0px;">From: <span style="color: #FF6000;"><%= booking.start_date %> </span> </p>
@@ -98,7 +98,7 @@
 
               <div>
                 <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
-                  <span style="color: #4477CE;">Click me to edit your Spaceship<% spaceship.name %></span>
+                  <span>Edit Details<% spaceship.name %></span>
                 </p>
               </div>
 
@@ -111,7 +111,7 @@
                   <%= f.button :submit %>
                 <% end %>
               </div>
-                <%= link_to "⊗", spaceship_path(spaceship), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                <%= link_to "Delete", spaceship_path(spaceship), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             </span>
         </div>
       </div>
