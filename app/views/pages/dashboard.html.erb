@@ -89,30 +89,24 @@
               <p><span style="color: #6E7E91;"><%= spaceship.description %></span></p>
               <p>Daily Rate: <span style="color: #6E7E91;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
 
-                <div>
-                  <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
-                    <span style="color: #6E7E91;">Click me to edit your Spaceship<% spaceship.name %></span>
-                  </p>
+              <div>
+                <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
+                  <span style="color: #6E7E91;">Click me to edit your Spaceship<% spaceship.name %></span>
+                </p>
+              </div>
 
-                </div>
-
-                <div class="details-box" style="display: none;">
-                  <%= simple_form_for spaceship do |f| %>
-                    <%= f.input :name, placeholder: 'USS Enterprise'%>
-                    <%= f.input :model, placeholder: 'Millenium Falcon' %>
-                    <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
-                    <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
-                    <%= f.button :submit %>
-                  <% end %>
-                </div>
-                  <%= link_to "⊗",
-                    spaceship_path(spaceship),
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                   %>
+              <div class="details-box" style="display: none;">
+                <%= simple_form_for spaceship do |f| %>
+                  <%= f.input :name, placeholder: 'USS Enterprise'%>
+                  <%= f.input :model, placeholder: 'Millenium Falcon' %>
+                  <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
+                  <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
+                <%= link_to "⊗", spaceship_path(spaceship), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             </span>
-
         </div>
-
       </div>
     <% end %>
   </div>
@@ -160,7 +154,6 @@
     <% end %>
   </div>
 </div>
-
 
 <%# Necessary JavaScript to make magic happen %>
 
