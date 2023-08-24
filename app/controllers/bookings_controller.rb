@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @booking.spaceship_id = @spaceship.id.to_i
 
     if @booking.save
-      redirect_to bookings_path
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end
