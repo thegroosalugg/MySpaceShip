@@ -70,18 +70,29 @@
         <div class="bookings-page-content d-flex justify-content-center align-items-center p-3"
           style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url('<%= url_for(spaceship.photo) %>');">
+
             <span>
               <p style="margin-bottom: 0px;">The Profile</p>
               <p><span style="color: #FF6000;"><%= spaceship.description %></span></p>
               <p>Daily Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
-              <%= simple_form_for spaceship do |f| %>
-                <%= f.input :name, placeholder: 'USS Enterprise'%>
-                <%= f.input :model, placeholder: 'Millenium Falcon' %>
-                <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
-                <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
-                <%= f.button :submit %>
-              <% end %>
+
+                <div>
+                  <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
+                    <span style="color: #FF6000;">Click me to edit your Spaceship<% spaceship.name %></span>
+                  </p>
+                </div>
+
+                <div class="details-box" style="display: none;">
+                  <%= simple_form_for spaceship do |f| %>
+                    <%= f.input :name, placeholder: 'USS Enterprise'%>
+                    <%= f.input :model, placeholder: 'Millenium Falcon' %>
+                    <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
+                    <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
+                    <%= f.button :submit %>
+                  <% end %>
+                </div>
             </span>
+
         </div>
 
       </div>
