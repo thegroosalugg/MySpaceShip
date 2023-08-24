@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard"
 
-  resources :bookings, only: %i[index show]
+  resources :bookings, only: %i[index show] do
+    get "confirm", to: "pages#confirm"
+    get "decline", to: "pages#decline"
+  end
   devise_for :users
 end

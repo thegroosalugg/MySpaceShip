@@ -8,7 +8,6 @@ class BookingsController < ApplicationController
     @spaceship = Spaceship.find(@booking.spaceship_id)
   end
 
-
   def new
     @booking = Booking.new
     @spaceship = Spaceship.find(params["spaceship_id"])
