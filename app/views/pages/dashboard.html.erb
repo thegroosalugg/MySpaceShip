@@ -148,7 +148,7 @@
           url('<%= url_for(spaceship_booking.spaceship.photo) %>');">
 
             <span>
-              <div class="d-flex flex-row">
+              <div class="d-flex justify-content-center">
                 <h6 style="margin-right: 5px;">Status:</h6>
                   <% if spaceship_booking.status == "accepted" %>
                     <span class="text-success">
@@ -160,15 +160,21 @@
                 <h6><%= spaceship_booking.status %></h6>
                     </span>
               </div>
-              <span style="color: #FAF0E6;">
-                <p style="margin-bottom: 0px;">From: <span style="color: #00CCCC;"><%= spaceship_booking.start_date.strftime('%b %d, %Y') %> </span> </p>
-                <p>to: <span style="color: #00CCCC;"><%= spaceship_booking.end_date.strftime('%b %d, %Y') %> </span> </p>
-                <p style="margin-bottom: 0px;">Rate: <span style="color: #00CCCC;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship_booking.spaceship.daily_rate %></span></p>
-                <p>Total: <span style="color: #00CCCC;"><i class="fa-solid fa-dollar-sign"></i><%= (((spaceship_booking.end_date - spaceship_booking.start_date).to_i + 1) * spaceship_booking.spaceship.daily_rate).round(2) %></span></p>
-              </span>
-              <div class="d-flex justify-content-around">
-                <%= link_to "Accept", booking_confirm_path(spaceship_booking), class: "text-success" %>
-                <%= link_to "Decline", booking_decline_path(spaceship_booking), class: "text-danger" %>
+
+              <div class="d-flex justify-content-between">
+                <div style="color: #FAF0E6; margin-right: 20px;">
+                  <p style="margin-bottom: 0px;">From: <span style="color: #00CCCC;"><%= spaceship_booking.start_date.strftime('%b %d, %Y') %> </span> </p>
+                  <p>to: <span style="color: #00CCCC;"><%= spaceship_booking.end_date.strftime('%b %d, %Y') %> </span> </p>
+                </div>
+                <div style="color: #FAF0E6; margin-left: 20px;">
+                  <p style="margin-bottom: 0px;">Rate: <span style="color: #00CCCC;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship_booking.spaceship.daily_rate %></span></p>
+                  <p>Total: <span style="color: #00CCCC;"><i class="fa-solid fa-dollar-sign"></i><%= (((spaceship_booking.end_date - spaceship_booking.start_date).to_i + 1) * spaceship_booking.spaceship.daily_rate).round(2) %></span></p>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <%= link_to "Accept", booking_confirm_path(spaceship_booking), class: "text-success", style: "margin-right: 10px;" %>
+                <%= link_to "Decline", booking_decline_path(spaceship_booking), class: "text-danger", style: "margin-left: 10px;" %>
               </div>
             </span>
 
