@@ -45,8 +45,12 @@
 <div>
 
 <h1>My Spaceships</h1>
-<% @spaceships.each do | spaceship|  %>
-<h3><%= spaceship.name %></h3>
+  <% @spaceships.each do | spaceship|  %>
+  <h3><%= spaceship.name %></h3>
+  <%= link_to "⊗",
+    spaceship_path(spaceship),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
 <% end %>
 
 

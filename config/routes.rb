@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root to: "pages#home"
-  resources :spaceships, only: %i[index show new create edit update] do
+  resources :spaceships, only: %i[index show new create edit update delete] do
     resources :bookings, only: %i[new create]
   end
 
   get "dashboard", to: "pages#dashboard"
+  delete "spaceships/:id", to: "spaceships#delete"
 
   resources :bookings, only: %i[index show]
   devise_for :users
