@@ -1,0 +1,22 @@
+
+<h1>My Spaceships</h1>
+<% @spaceships.each do | spaceship|  %>
+<h3><%= spaceship.name %></h3>
+<% end %>
+
+
+<h1>My planned trips</h1>
+<% @my_bookings %>
+<p><% @my_bookings.each do | booking | %>
+  <h3><%= booking.spaceship.name%></h3>
+  <%= booking.start_date%>
+  <%= booking.end_date%></p>
+<% end %>
+
+
+<h1>My open booking requests</h1>
+<p><% @my_spaceships_bookings.each do | spaceship_booking | %>
+  <h3><%= spaceship_booking.spaceship.name%></h3>
+  <%= spaceship_booking.start_date%>
+  <%= spaceship_booking.end_date%></p>
+<% end %>
