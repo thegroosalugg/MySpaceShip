@@ -115,6 +115,8 @@
   <h3><%= spaceship_booking.spaceship.name%></h3>
   <%= spaceship_booking.start_date%>
   <%= spaceship_booking.end_date%></p>
+  <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
+  <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
 <% end %>
 </div>
 

@@ -16,4 +16,17 @@ class PagesController < ApplicationController
     # we want to display all the booking requests that a user reveived from other users (incoming) + their status
     @my_spaceships_bookings = Booking.joins(:spaceship).where(spaceships: { user_id: current_user.id })
   end
+
+  def confirm
+    @booking = Booking.find(params[:booking_id])
+    @booking.status = "accepted"
+    redirect_to dashboard_path
+  end
+
+  def decline
+    @booking = Booking.find(params[:booking_id])
+    @booking.status = "rejected"
+    # @booking.destroy # instead of destoying please hide in the view
+    redirect_to dashboard_path
+  end
 end
