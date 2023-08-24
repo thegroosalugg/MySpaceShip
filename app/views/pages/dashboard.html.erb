@@ -73,7 +73,7 @@
             <span>
               <p style="margin-bottom: 0px;">The Profile</p>
               <p><span style="color: #FF6000;"><%= spaceship.description %></span></p>
-              <p>Daily Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %> </span> </p>
+              <p>Daily Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
               <%= simple_form_for spaceship do |f| %>
                 <%= f.input :name, placeholder: 'USS Enterprise'%>
                 <%= f.input :model, placeholder: 'Millenium Falcon' %>
