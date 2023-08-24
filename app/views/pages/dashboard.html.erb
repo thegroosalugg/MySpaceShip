@@ -33,8 +33,8 @@
             <span style="color: #FAF0E6;">
               <p style="margin-bottom: 0px;">From: <span style="color: #FF6000;"><%= booking.start_date %> </span> </p>
               <p>to: <span style="color: #FF6000;"><%= booking.end_date %> </span> </p>
-              <p style="margin-bottom: 0px;">Daily Rate: <span style="color: #FF6000;"><%= booking.spaceship.daily_rate %> </span> </p>
-              <p>Total Invoice Amount: <span style="color: #FF6000;"><%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %> </span> </p>
+              <p style="margin-bottom: 0px;">Daily Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= booking.spaceship.daily_rate %></span></p>
+              <p>Total Invoice Amount: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %></span></p>
             </span>
         </div>
 
@@ -71,7 +71,16 @@
           style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url('<%= url_for(spaceship.photo) %>');">
             <span>
-              <p> <%= spaceship.description %></p>
+              <p style="margin-bottom: 0px;">The Profile</p>
+              <p><span style="color: #FF6000;"><%= spaceship.description %></span></p>
+              <p>Daily Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %> </span> </p>
+              <%= simple_form_for spaceship do |f| %>
+                <%= f.input :name, placeholder: 'USS Enterprise'%>
+                <%= f.input :model, placeholder: 'Millenium Falcon' %>
+                <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
+                <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
+                <%= f.button :submit %>
+              <% end %>
             </span>
         </div>
 
