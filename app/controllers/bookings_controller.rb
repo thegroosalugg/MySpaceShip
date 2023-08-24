@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to dashboard_path
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, notice: "Cannot create booking without dates"
     end
   end
 
