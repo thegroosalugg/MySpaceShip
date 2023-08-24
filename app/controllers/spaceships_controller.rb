@@ -42,6 +42,10 @@ class SpaceshipsController < ApplicationController
   end
 
   def delete
+    @spaceship = Spaceship.find(params[:id])
+    @spaceship.destroy
+
+    redirect_to dashboard_path, status: :see_other
   end
 
   private

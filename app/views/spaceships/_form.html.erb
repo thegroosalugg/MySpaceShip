@@ -1,0 +1,7 @@
+<%= simple_form_for @spaceship do |f| %>
+  <%= f.input :name, placeholder: 'USS Enterprise'%>
+  <%= f.input :model, placeholder: 'Millenium Falcon' %>
+  <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
+  <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
+  <%= f.button :submit %>
+<% end %>
