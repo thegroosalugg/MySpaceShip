@@ -38,8 +38,15 @@
                 <h6><%= booking.spaceship.name %></h6>
                 <h6><%= booking.spaceship.model %></h6>
               </span>
+
                 <h6>Status:</h6>
-              <span style="color: #FF6000;">
+                <% if booking.status == "accepted" %>
+                 <span class="text-success">
+                <% elsif booking.status == "rejected" %>
+                 <span class="text-danger">
+                <% else booking.status == "rejected" %>
+                <span style="color: #FF6000;">
+                <% end %>
                 <h6><%= booking.status %></h6>
               </span>
             </span>
