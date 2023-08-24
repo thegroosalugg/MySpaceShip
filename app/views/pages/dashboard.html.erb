@@ -38,6 +38,10 @@
                 <h6><%= booking.spaceship.name %></h6>
                 <h6><%= booking.spaceship.model %></h6>
               </span>
+                <h6>Status:</h6>
+              <span style="color: #FF6000;">
+                <h6><%= booking.status %></h6>
+              </span>
             </span>
             <span style="color: #FAF0E6;">
               <p style="margin-bottom: 0px;">From: <span style="color: #FF6000;"><%= booking.start_date %> </span> </p>
@@ -82,12 +86,12 @@
 
             <span>
               <p style="margin-bottom: 0px;">The Profile</p>
-              <p><span style="color: #FF6000;"><%= spaceship.description %></span></p>
-              <p>Daily Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
+              <p><span style="color: #6E7E91;"><%= spaceship.description %></span></p>
+              <p>Daily Rate: <span style="color: #6E7E91;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
 
                 <div>
                   <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
-                    <span style="color: #FF6000;">Click me to edit your Spaceship<% spaceship.name %></span>
+                    <span style="color: #6E7E91;">Click me to edit your Spaceship<% spaceship.name %></span>
                   </p>
 
                 </div>
@@ -143,10 +147,11 @@
           url('<%= url_for(spaceship_booking.spaceship.photo) %>');">
 
             <span>
-             <%= spaceship_booking.start_date%>
-             <%= spaceship_booking.end_date%>
-              <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
-              <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
+             <%= spaceship_booking.start_date %>
+             <%= spaceship_booking.end_date %>
+             <%= spaceship_booking.status %>
+             <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
+             <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
             </span>
 
         </div>
