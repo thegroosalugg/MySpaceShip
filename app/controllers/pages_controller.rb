@@ -20,12 +20,14 @@ class PagesController < ApplicationController
   def confirm
     @booking = Booking.find(params[:booking_id])
     @booking.status = "accepted"
+    @booking.save
     redirect_to dashboard_path
   end
 
   def decline
     @booking = Booking.find(params[:booking_id])
     @booking.status = "rejected"
+    @booking.save
     # @booking.destroy # instead of destoying please hide in the view
     redirect_to dashboard_path
   end
