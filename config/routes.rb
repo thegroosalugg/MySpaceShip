@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[new create]
   end
 
+  get "dashboard", to: "pages#dashboard"
+
   resources :bookings, only: %i[index show]
   devise_for :users
 end
