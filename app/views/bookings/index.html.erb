@@ -1,3 +1,5 @@
+<%# Kill this page on completion %>
+
 <h1 class="p-3">Your upcoming space events</h1>
 
 <div class="d-flex justify-content-center align-items-center overflow-auto" style="max-height: 350px;">
@@ -6,8 +8,21 @@
       <% spaceship = Spaceship.find(booking.spaceship_id) %>
       <div class="d-flex justify-content-between align-items-center">
         <h3 class="mt-1 mx-3"><%= spaceship.name %></h3>
-        <%= link_to "View details", booking_path(booking), class: "btn btn-secondary mt-1" %>
+        <button class="btn btn-secondary mt-1 toggle-details">Toggle Details</button>
+      </div>
+      <div class="details-box" style="display: none;">
+        <p><strong>Spaceship:</strong> <%= spaceship.name %></p>
+        <p> this is some text </p>
+        <!-- Add more booking details as needed -->
       </div>
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $(".toggle-details").click(function() {
+      $(this).parent().next(".details-box").slideToggle();
+    });
+  });
+</script>
