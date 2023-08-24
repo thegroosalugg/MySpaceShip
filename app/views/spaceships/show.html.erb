@@ -5,9 +5,9 @@
     <h1 class="mt-5"><%= @spaceship.name %></h1>
     <h1><%= @spaceship.model %></h1>
   </span>
-  <p style="margin-top: auto; font-size: 20px;"><%= @spaceship.description %></p>
+  <p style="margin-top: auto; font-size: 30px;"><%= @spaceship.description %></p>
   <div class="container mt-auto mb-3">
-    <h6> Price per day: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= @spaceship.daily_rate %></span></h6>
+    <h6 style="font-size: 20px;"> Price per day: <span style="color: #FF6000; font-size: 20px;"><i class="fa-solid fa-dollar-sign"></i><%= @spaceship.daily_rate %></span></h6>
     <%= render "bookings/form", booking: @booking %>
   </div>
 </div>
