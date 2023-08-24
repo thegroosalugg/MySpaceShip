@@ -1,0 +1,33 @@
+<h1 class="p-3">Your upcoming space events</h1>
+
+<div class="d-flex justify-content-center align-items-center overflow-auto" style="max-height: 350px;">
+  <div class="d-flex flex-column my-1">
+    <% @my_bookings.each do |booking| %>
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="mt-1 mx-3"><%= booking.spaceship.name %></h3>
+        <button class="btn btn-secondary mt-1 toggle-details">Toggle Details</button>
+      </div>
+      <div class="details-box" style="display: none;">
+
+        <div class="show-page-content d-flex flex-column justify-content-center align-items-center"
+          style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url('<%= url_for(booking.spaceship.photo) %>');">
+            <h1>Your booking of </h1>
+            <h1><%= "#{booking.spaceship.name} #{booking.spaceship.model}" %></h1>
+            <h6>From: <%= booking.start_date %> to: <%= booking.end_date %></h6>
+            <p class="mb-0">The Daily Rate: <%= booking.spaceship.daily_rate %></p>
+            <p class="mb-0">Total Invoice Amount: <%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %></p>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $(".toggle-details").click(function() {
+      $(this).parent().next(".details-box").slideToggle();
+    });
+  });
+</script>
