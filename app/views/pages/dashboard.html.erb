@@ -189,8 +189,21 @@
     </div>
   </div>
 </div>
-<%# Necessary JavaScript to make magic happen %>
 
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div>
+    <h6 class="spaceship-name-toggle d-flex justify-content-center py-2">
+      <span>List your Spaceship<% @spaceship = Spaceship.new %></span>
+    </h6>
+  </div>
+
+  <div class="details-box" style="display: none; max-width: 450px;">
+    <%= render 'spaceships/form' %>
+  </div>
+</div>
+
+<%# Necessary JavaScript to make magic happen %>
 <script>
   $(document).ready(function() {
     $(".spaceship-name-toggle").click(function() {
