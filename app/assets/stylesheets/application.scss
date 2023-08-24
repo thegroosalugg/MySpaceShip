@@ -51,12 +51,16 @@ body {
 .card {
   box-shadow: 2px 2px 4px rgb(118, 120, 121);
 }
+
+// change all fonts
 h1, h2, h3, h4, h5, h6, .daily-rate, .nav-link, form, a {
   font-family: 'Black Ops One', sans-serif;
 }
 p {
   font-family: 'ADLaM Display', sans-serif;
 }
+
+// hover & transition effects for all links and buttons
 a {
   text-decoration: none;
   color: #EEEEEE;
@@ -91,6 +95,8 @@ a:hover, input[type="submit"][name="commit"]:hover {
 
   transform: scale(1.05); /* Increase the scale factor for desired effect */
 }
+
+// Current Spaceship background photo
 .show-page-content {
   background-size: cover;
   background-position: center;
@@ -99,12 +105,27 @@ a:hover, input[type="submit"][name="commit"]:hover {
   border-radius: 10px;
   text-shadow: 2px 2px 3px black;
 }
+
+// Current Spaceship background photo dashboard
 .bookings-page-content {
   background-size: cover;
   background-position: center;
   border-radius: 10px;
   text-shadow: 2px 2px 3px black;
 }
+
+// all forms need padding
 .form-inputs {
   padding: 20px;
+}
+.simple_form {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+// dim placeholder form text
+.form-control::placeholder {
+  color: #999999; /* Choose an even lighter color here */
+  opacity: 0.8;   /* Adjust the opacity to make it more faded */
 }
