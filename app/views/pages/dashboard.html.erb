@@ -89,7 +89,7 @@
                   <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
                     <span style="color: #FF6000;">Click me to edit your Spaceship<% spaceship.name %></span>
                   </p>
-                  
+
                 </div>
 
                 <div class="details-box" style="display: none;">
@@ -130,23 +130,23 @@
 
 <div class="overflow-auto mx-5 py-1" style="max-height: 350px;">
   <div class="d-flex flex-column my-1">
-    <% @my_spaceships_bookings.each do |booking| %>
+    <% @my_spaceships_bookings.each do |spaceship_booking| %>
       <div class="border p-3 my-2" style="background-color: #116D6E; border-radius: 5px;">
         <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
-          <span><%= booking.spaceship.name %> <%= booking.spaceship.model %></span>
+          <span><%= spaceship_booking.spaceship.name %> <%= spaceship_booking.spaceship.model %></span>
         </h6>
       </div>
 
       <div class="details-box" style="display: none;">
         <div class="bookings-page-content d-flex justify-content-center align-items-center p-3"
           style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url('<%= url_for(booking.spaceship.photo) %>');">
+          url('<%= url_for(spaceship_booking.spaceship.photo) %>');">
 
             <span>
-             <%= booking.start_date%>
-             <%= booking.end_date%>
+             <%= spaceship_booking.start_date%>
+             <%= spaceship_booking.end_date%>
               <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
-               <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
+              <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
             </span>
 
         </div>
