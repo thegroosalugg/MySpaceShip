@@ -3,14 +3,17 @@
   <h1>space events</h1>
 </div>
 
-<div class="overflow-auto mx-5 py3" style="max-height: 350px;">
+<div class="overflow-auto mx-5 py-2" style="max-height: 350px;">
   <div class="d-flex flex-column my-1">
     <% @my_bookings.each do |booking| %>
-      <div class="d-flex justify-content-between align-items-center border py-3 mb-3">
-        <h3 class="mt-1 mx-3 spaceship-name-toggle"><%= booking.spaceship.name %> <%= booking.end_date %> <%= booking.start_date %></h3>
+      <div class="border p-3 my-2" style="background-color: #D65A31; border-radius: 5px;">
+        <h6 class="spaceship-name-toggle d-flex justify-content-between pt-2">
+          <span><%= booking.spaceship.name %> <%= booking.spaceship.model %></span>
+          <span>Booked: <%= booking.end_date.strftime('%b %d, %Y') %></span>
+        </h6>
       </div>
-      <div class="details-box" style="display: none;">
 
+      <div class="details-box" style="display: none;">
         <div class="bookings-page-content d-flex flex-column justify-content-center align-items-center"
           style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url('<%= url_for(booking.spaceship.photo) %>');">
