@@ -1,7 +1,15 @@
-<div class="p-3">
-  <h1>Your upcoming</h1>
-  <h1>space events</h1>
-</div>
+<% if @my_bookings.empty? %>
+  <div class="p-3">
+    <h1>You have no</h1>
+    <h1>events booked</h1>
+  </div>
+<% else %>
+  <div class="p-3">
+    <h1>Your upcoming</h1>
+    <h1>space events</h1>
+  </div>
+<% end %>
+
 
 <div class="overflow-auto mx-5 py-1" style="max-height: 350px;">
   <div class="d-flex flex-column my-1">
