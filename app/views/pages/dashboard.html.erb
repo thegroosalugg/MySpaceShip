@@ -80,6 +80,7 @@
                   <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
                     <span style="color: #FF6000;">Click me to edit your Spaceship<% spaceship.name %></span>
                   </p>
+                  
                 </div>
 
                 <div class="details-box" style="display: none;">
@@ -91,6 +92,10 @@
                     <%= f.button :submit %>
                   <% end %>
                 </div>
+                  <%= link_to "⊗",
+                    spaceship_path(spaceship),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                   %>
             </span>
 
         </div>
