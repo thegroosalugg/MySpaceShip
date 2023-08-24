@@ -1,4 +1,4 @@
-<%# My Bookings Dashboard. %>
+<%# My Bookings Dashboard %>
 
 <% if @my_bookings.empty? %>
   <div class="p-3">
@@ -39,20 +39,20 @@
                 <h6><%= booking.spaceship.model %></h6>
               </span>
 
-                <h6>Status:</h6>
-                  <% if booking.status == "accepted" %>
-                  <span class="text-success">
-                  <% elsif booking.status == "rejected" %>
-                  <span class="text-danger">
-                  <% else booking.status == "rejected" %>
-                  <span style="color: #FF6000;">
-                  <% end %>
-                <h6><%= booking.status %></h6>
-                 </span>
+              <h6>Status:</h6>
+                <% if booking.status == "accepted" %>
+                <span class="text-success">
+                <% elsif booking.status == "rejected" %>
+                <span class="text-danger">
+                <% else booking.status == "rejected" %>
+                <span style="color: #FF6000;">
+                <% end %>
+              <h6><%= booking.status %></h6>
+                </span>
             </span>
             <span style="color: #FAF0E6;">
-              <p style="margin-bottom: 0px;">From: <span style="color: #FF6000;"><%= booking.start_date %> </span> </p>
-              <p>to: <span style="color: #FF6000;"><%= booking.end_date %> </span> </p>
+              <p style="margin-bottom: 0px;">From: <span style="color: #FF6000;"><%= booking.start_date.strftime('%b %d, %Y') %> </span> </p>
+              <p>to: <span style="color: #FF6000;"><%= booking.end_date.strftime('%b %d, %Y') %> </span> </p>
               <p style="margin-bottom: 0px;">Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= booking.spaceship.daily_rate %></span></p>
               <p>Total: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %></span></p>
             </span>
@@ -143,20 +143,36 @@
       </div>
 
       <div class="details-box" style="display: none;">
-        <div class="bookings-page-content d-flex justify-content-center align-items-center p-3"
+        <div class="bookings-page-content d-flex justify-content-center p-3"
           style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url('<%= url_for(spaceship_booking.spaceship.photo) %>');">
 
             <span>
-             <%= spaceship_booking.start_date %>
-             <%= spaceship_booking.end_date %>
-             <%= spaceship_booking.status %>
-             <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
-             <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
+              <div class="d-flex flex-row">
+                <h6 style="margin-right: 5px;">Status:</h6>
+                  <% if spaceship_booking.status == "accepted" %>
+                    <span class="text-success">
+                  <% elsif spaceship_booking.status == "rejected" %>
+                    <span class="text-danger">
+                  <% else spaceship_booking.status == "rejected" %>
+                    <span style="color: #00CCCC;">
+                  <% end %>
+                <h6><%= spaceship_booking.status %></h6>
+                    </span>
+              </div>
+              <span style="color: #FAF0E6;">
+                <p style="margin-bottom: 0px;">From: <span style="color: #00CCCC;"><%= spaceship_booking.start_date.strftime('%b %d, %Y') %> </span> </p>
+                <p>to: <span style="color: #00CCCC;"><%= spaceship_booking.end_date.strftime('%b %d, %Y') %> </span> </p>
+                <p style="margin-bottom: 0px;">Rate: <span style="color: #00CCCC;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship_booking.spaceship.daily_rate %></span></p>
+                <p>Total: <span style="color: #00CCCC;"><i class="fa-solid fa-dollar-sign"></i><%= (((spaceship_booking.end_date - spaceship_booking.start_date).to_i + 1) * spaceship_booking.spaceship.daily_rate).round(2) %></span></p>
+              </span>
+              <div class="d-flex justify-content-around">
+                <%= link_to "Accept", booking_confirm_path(spaceship_booking), class: "text-success" %>
+                <%= link_to "Decline", booking_decline_path(spaceship_booking), class: "text-danger" %>
+              </div>
             </span>
 
         </div>
-
       </div>
     <% end %>
   </div>
