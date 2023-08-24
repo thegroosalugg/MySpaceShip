@@ -16,9 +16,15 @@
   <div class="d-flex flex-column my-1">
     <% @my_bookings.each do |booking| %>
       <div class="border p-3 my-2" style="background-color: #D65A31; border-radius: 5px;">
-        <h6 class="spaceship-name-toggle d-flex justify-content-between pt-2">
-          <span><%= booking.spaceship.name %> <%= booking.spaceship.model %></span>
-          <span>Booked: <%= booking.end_date.strftime('%b %d, %Y') %></span>
+        <h6 class="spaceship-name-toggle d-flex justify-content-between pt-2" style="min-width: 350px;">
+          <div class="d-flex flex-column">
+            <span><%= booking.spaceship.name %></span>
+            <span><%= booking.spaceship.model %></span>
+          </div>
+          <div class="d-flex flex-column">
+            Booked:
+            <span><%= booking.end_date.strftime('%b %d, %Y') %></span>
+          </div>
         </h6>
       </div>
 
@@ -28,13 +34,16 @@
           url('<%= url_for(booking.spaceship.photo) %>');">
             <span>
               <h6>Your booking of</h6>
-              <h6><%= "#{booking.spaceship.name} #{booking.spaceship.model}" %></h6>
+              <span style="color: #FF6000;">
+                <h6><%= booking.spaceship.name %></h6>
+                <h6><%= booking.spaceship.model %></h6>
+              </span>
             </span>
             <span style="color: #FAF0E6;">
               <p style="margin-bottom: 0px;">From: <span style="color: #FF6000;"><%= booking.start_date %> </span> </p>
               <p>to: <span style="color: #FF6000;"><%= booking.end_date %> </span> </p>
-              <p style="margin-bottom: 0px;">Daily Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= booking.spaceship.daily_rate %></span></p>
-              <p>Total Invoice Amount: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %></span></p>
+              <p style="margin-bottom: 0px;">Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= booking.spaceship.daily_rate %></span></p>
+              <p>Total: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %></span></p>
             </span>
         </div>
 
@@ -105,20 +114,50 @@
   </div>
 </div>
 
+<%# My Open Bookings Dashboard %>
 
-
-
-
-<div>
-<h1>My open booking requests</h1>
-<p><% @my_spaceships_bookings.each do | spaceship_booking | %>
-  <h3><%= spaceship_booking.spaceship.name%></h3>
-  <%= spaceship_booking.start_date%>
-  <%= spaceship_booking.end_date%></p>
-  <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
-  <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
+<% if @my_spaceships_bookings.empty? %>
+  <div class="p-3">
+    <h1>You have no</h1>
+    <h1>open bookings</h1>
+  </div>
+<% else %>
+  <div class="p-3">
+    <h1>Your Open</h1>
+    <h1>Bookings</h1>
+  </div>
 <% end %>
+
+<div class="overflow-auto mx-5 py-1" style="max-height: 350px;">
+  <div class="d-flex flex-column my-1">
+    <% @my_spaceships_bookings.each do |booking| %>
+      <div class="border p-3 my-2" style="background-color: #116D6E; border-radius: 5px;">
+        <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
+          <span><%= booking.spaceship.name %> <%= booking.spaceship.model %></span>
+        </h6>
+      </div>
+
+      <div class="details-box" style="display: none;">
+        <div class="bookings-page-content d-flex justify-content-center align-items-center p-3"
+          style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url('<%= url_for(booking.spaceship.photo) %>');">
+
+            <span>
+             <%= booking.start_date%>
+             <%= booking.end_date%>
+              <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
+               <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
+            </span>
+
+        </div>
+
+      </div>
+    <% end %>
+  </div>
 </div>
+
+
+<%# Necessary JavaScript to make magic happen %>
 
 <script>
   $(document).ready(function() {
