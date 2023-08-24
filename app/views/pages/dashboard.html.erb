@@ -1,4 +1,4 @@
-<%# My Bookings Dashboard %>
+<%# My Bookings Dashboard. %>
 
 <% if @my_bookings.empty? %>
   <div class="p-3">
@@ -37,6 +37,10 @@
               <span style="color: #FF6000;">
                 <h6><%= booking.spaceship.name %></h6>
                 <h6><%= booking.spaceship.model %></h6>
+              </span>
+                <h6>Status:</h6>
+              <span style="color: #FF6000;">
+                <h6><%= booking.status %></h6>
               </span>
             </span>
             <span style="color: #FAF0E6;">
@@ -82,33 +86,27 @@
 
             <span>
               <p style="margin-bottom: 0px;">The Profile</p>
-              <p><span style="color: #FF6000;"><%= spaceship.description %></span></p>
-              <p>Daily Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
+              <p><span style="color: #6E7E91;"><%= spaceship.description %></span></p>
+              <p>Daily Rate: <span style="color: #6E7E91;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
 
-                <div>
-                  <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
-                    <span style="color: #FF6000;">Click me to edit your Spaceship<% spaceship.name %></span>
-                  </p>
+              <div>
+                <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
+                  <span style="color: #6E7E91;">Click me to edit your Spaceship<% spaceship.name %></span>
+                </p>
+              </div>
 
-                </div>
-
-                <div class="details-box" style="display: none;">
-                  <%= simple_form_for spaceship do |f| %>
-                    <%= f.input :name, placeholder: 'USS Enterprise'%>
-                    <%= f.input :model, placeholder: 'Millenium Falcon' %>
-                    <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
-                    <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
-                    <%= f.button :submit %>
-                  <% end %>
-                </div>
-                  <%= link_to "⊗",
-                    spaceship_path(spaceship),
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                   %>
+              <div class="details-box" style="display: none;">
+                <%= simple_form_for spaceship do |f| %>
+                  <%= f.input :name, placeholder: 'USS Enterprise'%>
+                  <%= f.input :model, placeholder: 'Millenium Falcon' %>
+                  <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
+                  <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
+                <%= link_to "⊗", spaceship_path(spaceship), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             </span>
-
         </div>
-
       </div>
     <% end %>
   </div>
@@ -143,10 +141,11 @@
           url('<%= url_for(spaceship_booking.spaceship.photo) %>');">
 
             <span>
-             <%= spaceship_booking.start_date%>
-             <%= spaceship_booking.end_date%>
-              <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
-              <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
+             <%= spaceship_booking.start_date %>
+             <%= spaceship_booking.end_date %>
+             <%= spaceship_booking.status %>
+             <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
+             <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
             </span>
 
         </div>
@@ -155,7 +154,6 @@
     <% end %>
   </div>
 </div>
-
 
 <%# Necessary JavaScript to make magic happen %>
 
