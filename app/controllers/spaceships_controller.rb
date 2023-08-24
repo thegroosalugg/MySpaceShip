@@ -23,7 +23,7 @@ class SpaceshipsController < ApplicationController
     @spaceship.photo.attach(io: file, filename: "#{@spaceship.name}.jpg", content_type: "image/jpg")
 
     if @spaceship.save
-      redirect_to spaceship_path(@spaceship)
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class SpaceshipsController < ApplicationController
   def update
     @spaceship.update(spaceship_params)
     if @spaceship.save
-      redirect_to spaceship_path(@spaceship)
+      redirect_to dashboard_path
     else
       render :edit, status: :unprocessable_entity
     end

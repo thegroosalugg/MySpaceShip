@@ -20,8 +20,8 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
     @booking.spaceship_id = @spaceship.id.to_i
 
-    if @booking.save!
-      redirect_to bookings_path
+    if @booking.save
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity, notice: "Cannot create booking without dates"
     end
