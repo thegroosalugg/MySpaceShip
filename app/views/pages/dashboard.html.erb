@@ -3,10 +3,10 @@
   <h1>space events</h1>
 </div>
 
-<div class="d-flex justify-content-around align-items-center overflow-auto" style="max-height: 350px; min-width: 600px;">
+<div class="overflow-auto mx-5 py3" style="max-height: 350px;">
   <div class="d-flex flex-column my-1">
     <% @my_bookings.each do |booking| %>
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center border py-3 mb-3">
         <h3 class="mt-1 mx-3 spaceship-name-toggle"><%= booking.spaceship.name %> <%= booking.end_date %> <%= booking.start_date %></h3>
       </div>
       <div class="details-box" style="display: none;">
