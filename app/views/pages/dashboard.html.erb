@@ -1,3 +1,5 @@
+<%# My Bookings Dashboard %>
+
 <% if @my_bookings.empty? %>
   <div class="p-3">
     <h1>You have no</h1>
@@ -9,7 +11,6 @@
     <h1>space events</h1>
   </div>
 <% end %>
-
 
 <div class="overflow-auto mx-5 py-1" style="max-height: 350px;">
   <div class="d-flex flex-column my-1">
@@ -42,14 +43,48 @@
   </div>
 </div>
 
-<div>
+<%# My Spaceships Dashboard %>
 
-<h1>My Spaceships</h1>
-<% @spaceships.each do | spaceship|  %>
-<h3><%= spaceship.name %></h3>
+<% if @spaceships.empty? %>
+  <div class="p-3">
+    <h1>You have no</h1>
+    <h1>Spaceships</h1>
+  </div>
+<% else %>
+  <div class="p-3">
+    <h1>Your</h1>
+    <h1>Spaceships</h1>
+  </div>
 <% end %>
 
+<div class="overflow-auto mx-5 py-1" style="max-height: 350px;">
+  <div class="d-flex flex-column my-1">
+    <% @spaceships.each do |spaceship| %>
+      <div class="border p-3 my-2" style="background-color: #445069; border-radius: 5px;">
+        <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
+          <span><%= spaceship.name %> <%= spaceship.model %></span>
+        </h6>
+      </div>
 
+      <div class="details-box" style="display: none;">
+        <div class="bookings-page-content d-flex justify-content-center align-items-center p-3"
+          style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url('<%= url_for(spaceship.photo) %>');">
+            <span>
+              <p> <%= spaceship.description %></p>
+            </span>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+<div>
 <h1>My open booking requests</h1>
 <p><% @my_spaceships_bookings.each do | spaceship_booking | %>
   <h3><%= spaceship_booking.spaceship.name%></h3>
