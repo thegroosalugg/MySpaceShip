@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @spaceships = Spaceship.all
     if params[:query].present?
-      sql_subquery = "name ILIKE :query OR description ILIKE :query OR ILIKE :model"
+      sql_subquery = "name ILIKE :query OR description ILIKE :query OR model ILIKE :query"
       @spaceships = @spaceships.where(sql_subquery, query: "%#{params[:query]}%")
     end
   end
@@ -20,7 +20,7 @@ class PagesController < ApplicationController
     @my_spaceships_bookings = Booking.joins(:spaceship).where(spaceships: { user_id: current_user.id })
   end
 
-  
+
   def confirm
     @booking = Booking.find(params[:booking_id])
     @booking.status = "accepted"
