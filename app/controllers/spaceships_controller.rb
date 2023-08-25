@@ -19,8 +19,19 @@ class SpaceshipsController < ApplicationController
   def create
     @spaceship = Spaceship.new(spaceship_params)
     @spaceship.user = current_user
-    file = URI.open("https://res.cloudinary.com/ddynviqg1/image/upload/v1692700093/Spaceships/thomas-woodward-03_yzxne7.jpg")
-    @spaceship.photo.attach(io: file, filename: "#{@spaceship.name}.jpg", content_type: "image/jpg")
+
+
+    if @spaceship.user.email == "malte@human.com"
+      file = URI.open("https://res.cloudinary.com/ddynviqg1/image/upload/v1692957422/Spaceships/enterprise_odg8ih.jpg")
+      @spaceship.photo.attach(io: file, filename: "#{@spaceship.name}.jpg", content_type: "image/jpg")
+    elsif @spaceship.user.email == "chewie@wookie.com"
+      file = URI.open("https://res.cloudinary.com/ddynviqg1/image/upload/v1692957409/Spaceships/falcon_yroek8.jpg")
+      @spaceship.photo.attach(io: file, filename: "#{@spaceship.name}.jpg", content_type: "image/jpg")
+    else
+      file = URI.open("https://res.cloudinary.com/ddynviqg1/image/upload/v1692700093/Spaceships/thomas-woodward-03_yzxne7.jpg")
+      @spaceship.photo.attach(io: file, filename: "#{@spaceship.name}.jpg", content_type: "image/jpg")
+    end
+
 
     if @spaceship.save
       redirect_to dashboard_path

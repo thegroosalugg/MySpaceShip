@@ -6,6 +6,6 @@
   <h1>Your booking of </h1>
   <h1><%= "#{@spaceship.name} #{@spaceship.model}" %></h1>
   <h6>From: <%= @booking.start_date %> to: <%= @booking.end_date %></h6>
-  <p class="mb-0">The Daily Rate: <%= @spaceship.daily_rate %></p>
-  <p class="mb-0">Total Invoice Amount: <%= (((@booking.end_date - @booking.start_date).to_i + 1) * @spaceship.daily_rate).round(2) %></p>
+  <p class="mb-0">Daily Rate: <%= @spaceship.daily_rate %></p>
+  <p class="mb-0">Total Amount: <%= (((@booking.end_date - @booking.start_date).to_i + 1) * @spaceship.daily_rate).round(2) %></p>
 </div>
