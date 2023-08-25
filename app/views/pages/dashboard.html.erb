@@ -9,7 +9,7 @@
     <% else %>
       <div class="p-3" style="min-height: 100px;">
         <h3>Your upcoming</h3>
-        <h3>space events</h3>
+        <h3>flights</h3>
       </div>
     <% end %>
 
@@ -40,10 +40,13 @@
               style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
               url('<%= url_for(booking.spaceship.photo) %>');">
                 <span>
-                  <h6>Your booking of</h6>
-                  <span style="color: #FF6000;">
-                    <h6><%= booking.spaceship.name %></h6>
-                    <h6><%= booking.spaceship.model %></h6>
+
+                  <% booked_ship = Spaceship.find(booking.spaceship_id)  %>
+                  <% owner = User.find(booked_ship.user_id) %>
+
+                  <span>
+                    <h6>Owner:</h6>
+                    <span style="color: #FF6000;"><h6><%= owner.email %></h6></span>
                   </span>
 
                   <h6>Status:</h6>
@@ -55,6 +58,7 @@
                     <span style="color: #FF6000;">
                     <% end %>
                   <h6><%= booking.status %></h6>
+
                     </span>
                 </span>
                 <span style="color: #FAF0E6;">
@@ -62,6 +66,7 @@
                   <p>to: <span style="color: #FF6000;"><%= booking.end_date.strftime('%b %d, %Y') %> </span> </p>
                   <p style="margin-bottom: 0px;">Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= booking.spaceship.daily_rate %></span></p>
                   <p>Total: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %></span></p>
+
                 </span>
             </div>
 
