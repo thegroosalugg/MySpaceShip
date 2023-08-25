@@ -3,10 +3,10 @@
     <%= form_with url: root_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
-            placeholder: "Type a keyword"
+            class: "search-bar form-control",
+            placeholder: "Find your Spaceship"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-secondary search-button" %>
     <% end %>
   </div>
 </div>
