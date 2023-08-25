@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @spaceships = Spaceship.all
     if params[:query].present?
-      sql_subquery = "name ILIKE :query OR description ILIKE :query"
+      sql_subquery = "name ILIKE :query OR description ILIKE :query OR ILIKE :model"
       @spaceships = @spaceships.where(sql_subquery, query: "%#{params[:query]}%")
     end
   end
