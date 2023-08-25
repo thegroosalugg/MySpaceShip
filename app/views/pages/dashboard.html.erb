@@ -1,162 +1,209 @@
-<%# My Bookings Dashboard. %>
-
-<% if @my_bookings.empty? %>
-  <div class="p-3">
-    <h1>You have no</h1>
-    <h1>events booked</h1>
-  </div>
-<% else %>
-  <div class="p-3">
-    <h1>Your upcoming</h1>
-    <h1>space events</h1>
-  </div>
-<% end %>
-
-<div class="overflow-auto mx-5 py-1" style="max-height: 350px;">
-  <div class="d-flex flex-column my-1">
-    <% @my_bookings.each do |booking| %>
-      <div class="border p-3 my-2" style="background-color: #D65A31; border-radius: 5px;">
-        <h6 class="spaceship-name-toggle d-flex justify-content-between pt-2" style="min-width: 350px;">
-          <div class="d-flex flex-column">
-            <span><%= booking.spaceship.name %></span>
-            <span><%= booking.spaceship.model %></span>
-          </div>
-          <div class="d-flex flex-column">
-            Booked:
-            <span><%= booking.end_date.strftime('%b %d, %Y') %></span>
-          </div>
-        </h6>
+<%# My Bookings Dashboard* %>
+<div class="row pb-4">
+  <div class="col-md-4">
+    <% if @my_bookings.empty? %>
+      <div class="p-3" style="min-height: 100px;">
+        <h3>You have no</h3>
+        <h3>events booked</h3>
       </div>
-
-      <div class="details-box" style="display: none;">
-        <div class="bookings-page-content d-flex justify-content-between align-items-center p-3"
-          style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url('<%= url_for(booking.spaceship.photo) %>');">
-            <span>
-              <h6>Your booking of</h6>
-              <span style="color: #FF6000;">
-                <h6><%= booking.spaceship.name %></h6>
-                <h6><%= booking.spaceship.model %></h6>
-              </span>
-                <h6>Status:</h6>
-              <span style="color: #FF6000;">
-                <h6><%= booking.status %></h6>
-              </span>
-            </span>
-            <span style="color: #FAF0E6;">
-              <p style="margin-bottom: 0px;">From: <span style="color: #FF6000;"><%= booking.start_date %> </span> </p>
-              <p>to: <span style="color: #FF6000;"><%= booking.end_date %> </span> </p>
-              <p style="margin-bottom: 0px;">Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= booking.spaceship.daily_rate %></span></p>
-              <p>Total: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %></span></p>
-            </span>
-        </div>
-
+    <% else %>
+      <div class="p-3" style="min-height: 100px;">
+        <h3>Your upcoming</h3>
+        <h3>space events</h3>
       </div>
     <% end %>
+
+    <div class="overflow-auto mx-5 py-1" style="max-height: 350px; min-width: 350px;">
+      <div class="d-flex flex-column my-1">
+        <% @my_bookings.each do |booking| %>
+          <div class="border p-3 my-2" style="background-color: #D65A31; border-radius: 5px;">
+            <h6 class="spaceship-name-toggle d-flex justify-content-between pt-2">
+              <div class="d-flex flex-column">
+                <span><%= booking.spaceship.name %></span>
+                <span><%= booking.spaceship.model %></span>
+              </div>
+              <div class="d-flex flex-column">
+                Booked:
+                <span><%= booking.end_date.strftime('%b %d, %Y') %></span>
+              </div>
+            </h6>
+          </div>
+
+          <div class="details-box" style="display: none;">
+            <div class="bookings-page-content d-flex justify-content-between align-items-center p-3"
+              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('<%= url_for(booking.spaceship.photo) %>');">
+                <span>
+                  <h6>Your booking of</h6>
+                  <span style="color: #FF6000;">
+                    <h6><%= booking.spaceship.name %></h6>
+                    <h6><%= booking.spaceship.model %></h6>
+                  </span>
+
+                  <h6>Status:</h6>
+                    <% if booking.status == "accepted" %>
+                    <span class="text-success">
+                    <% elsif booking.status == "rejected" %>
+                    <span class="text-danger">
+                    <% else booking.status == "rejected" %>
+                    <span style="color: #FF6000;">
+                    <% end %>
+                  <h6><%= booking.status %></h6>
+                    </span>
+                </span>
+                <span style="color: #FAF0E6;">
+                  <p style="margin-bottom: 0px;">From: <span style="color: #FF6000;"><%= booking.start_date.strftime('%b %d, %Y') %> </span> </p>
+                  <p>to: <span style="color: #FF6000;"><%= booking.end_date.strftime('%b %d, %Y') %> </span> </p>
+                  <p style="margin-bottom: 0px;">Rate: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= booking.spaceship.daily_rate %></span></p>
+                  <p>Total: <span style="color: #FF6000;"><i class="fa-solid fa-dollar-sign"></i><%= (((booking.end_date - booking.start_date).to_i + 1) * booking.spaceship.daily_rate).round(2) %></span></p>
+                </span>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%# My Spaceships Dashboard %>
+  <div class="col-md-4">
+    <% if @spaceships.empty? %>
+      <div class="p-3" style="min-height: 100px;">
+        <h3>You have no</h3>
+        <h3>Spaceships</h3>
+      </div>
+    <% else %>
+      <div class="p-3" style="min-height: 100px;">
+        <h3>Your</h3>
+        <h3>Spaceships</h3>
+      </div>
+    <% end %>
+
+    <div class="overflow-auto mx-5 py-1" style="max-height: 350px; min-width: 350px;">
+      <div class="d-flex flex-column my-1">
+        <% @spaceships.each do |spaceship| %>
+          <div class="border p-3 my-2" style="background-color: #445069; border-radius: 5px;">
+            <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
+              <span><%= spaceship.name %> <%= spaceship.model %></span>
+            </h6>
+          </div>
+
+          <div class="details-box" style="display: none;">
+            <div class="bookings-page-content d-flex justify-content-center align-items-center p-3"
+              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('<%= url_for(spaceship.photo) %>');">
+
+                <span>
+                  <p style="margin-bottom: 0px;">The Profile</p>
+                  <p><span style="color: #4477CE;"><%= spaceship.description %></span></p>
+                  <p>Daily Rate: <span style="color: #4477CE;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
+
+                  <div>
+                    <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
+                      <span>Edit Details<% spaceship.name %></span>
+                    </p>
+                  </div>
+
+                  <div class="details-box" style="display: none;">
+                    <%= simple_form_for spaceship do |f| %>
+                      <%= f.input :name, placeholder: 'USS Enterprise'%>
+                      <%= f.input :model, placeholder: 'Millenium Falcon' %>
+                      <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
+                      <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
+                      <%= f.button :submit %>
+                    <% end %>
+                  </div>
+                    <%= link_to "Delete", spaceship_path(spaceship), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%# My Open Bookings Dashboard %>
+
+  <div class="col-md-4">
+    <% if @my_spaceships_bookings.empty? %>
+      <div class="p-3" style="min-height: 100px;">
+        <h3>You have no</h3>
+        <h3>open bookings</h3>
+      </div>
+    <% else %>
+      <div class="p-3" style="min-height: 100px;">
+        <h3>Your Open</h3>
+        <h3>Bookings</h3>
+      </div>
+    <% end %>
+
+    <div class="overflow-auto mx-5 py-1" style="max-height: 350px; min-width: 350px;">
+      <div class="d-flex flex-column my-1">
+        <% @my_spaceships_bookings.each do |spaceship_booking| %>
+          <div class="border p-3 my-2" style="background-color: #116D6E; border-radius: 5px;">
+            <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
+              <span><%= spaceship_booking.spaceship.name %> <%= spaceship_booking.spaceship.model %></span>
+            </h6>
+          </div>
+
+          <div class="details-box" style="display: none;">
+            <div class="bookings-page-content d-flex justify-content-center p-3"
+              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('<%= url_for(spaceship_booking.spaceship.photo) %>');">
+
+                <span>
+                  <div class="d-flex justify-content-center">
+                    <h6 style="margin-right: 5px;">Status:</h6>
+                      <% if spaceship_booking.status == "accepted" %>
+                        <span class="text-success">
+                      <% elsif spaceship_booking.status == "rejected" %>
+                        <span class="text-danger">
+                      <% else spaceship_booking.status == "rejected" %>
+                        <span style="color: #00CCCC;">
+                      <% end %>
+                    <h6><%= spaceship_booking.status %></h6>
+                        </span>
+                  </div>
+
+                  <div class="d-flex justify-content-between">
+                    <div style="color: #FAF0E6; margin-right: 20px;">
+                      <p style="margin-bottom: 0px;">From: <span style="color: #00CCCC;"><%= spaceship_booking.start_date.strftime('%b %d, %Y') %> </span> </p>
+                      <p>to: <span style="color: #00CCCC;"><%= spaceship_booking.end_date.strftime('%b %d, %Y') %> </span> </p>
+                    </div>
+                    <div style="color: #FAF0E6; margin-left: 20px;">
+                      <p style="margin-bottom: 0px;">Rate: <span style="color: #00CCCC;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship_booking.spaceship.daily_rate %></span></p>
+                      <p>Total: <span style="color: #00CCCC;"><i class="fa-solid fa-dollar-sign"></i><%= (((spaceship_booking.end_date - spaceship_booking.start_date).to_i + 1) * spaceship_booking.spaceship.daily_rate).round(2) %></span></p>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <%= link_to "Accept", booking_confirm_path(spaceship_booking), class: "text-success", style: "margin-right: 10px;" %>
+                    <%= link_to "Decline", booking_decline_path(spaceship_booking), class: "text-danger", style: "margin-left: 10px;" %>
+                  </div>
+                </span>
+
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
-<%# My Spaceships Dashboard %>
-
-<% if @spaceships.empty? %>
-  <div class="p-3">
-    <h1>You have no</h1>
-    <h1>Spaceships</h1>
+<%# Create spaceship toggle %>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div>
+    <h6 class="spaceship-name-toggle d-flex justify-content-center py-2">
+      <span>List your Spaceship<% @spaceship = Spaceship.new %></span>
+    </h6>
   </div>
-<% else %>
-  <div class="p-3">
-    <h1>Your</h1>
-    <h1>Spaceships</h1>
-  </div>
-<% end %>
 
-<div class="overflow-auto mx-5 py-1" style="max-height: 350px;">
-  <div class="d-flex flex-column my-1">
-    <% @spaceships.each do |spaceship| %>
-      <div class="border p-3 my-2" style="background-color: #445069; border-radius: 5px;">
-        <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
-          <span><%= spaceship.name %> <%= spaceship.model %></span>
-        </h6>
-      </div>
-
-      <div class="details-box" style="display: none;">
-        <div class="bookings-page-content d-flex justify-content-center align-items-center p-3"
-          style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url('<%= url_for(spaceship.photo) %>');">
-
-            <span>
-              <p style="margin-bottom: 0px;">The Profile</p>
-              <p><span style="color: #6E7E91;"><%= spaceship.description %></span></p>
-              <p>Daily Rate: <span style="color: #6E7E91;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
-
-              <div>
-                <p class="spaceship-name-toggle d-flex justify-content-center pt-2">
-                  <span style="color: #6E7E91;">Click me to edit your Spaceship<% spaceship.name %></span>
-                </p>
-              </div>
-
-              <div class="details-box" style="display: none;">
-                <%= simple_form_for spaceship do |f| %>
-                  <%= f.input :name, placeholder: 'USS Enterprise'%>
-                  <%= f.input :model, placeholder: 'Millenium Falcon' %>
-                  <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
-                  <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
-                  <%= f.button :submit %>
-                <% end %>
-              </div>
-                <%= link_to "⊗", spaceship_path(spaceship), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-            </span>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<%# My Open Bookings Dashboard %>
-
-<% if @my_spaceships_bookings.empty? %>
-  <div class="p-3">
-    <h1>You have no</h1>
-    <h1>open bookings</h1>
-  </div>
-<% else %>
-  <div class="p-3">
-    <h1>Your Open</h1>
-    <h1>Bookings</h1>
-  </div>
-<% end %>
-
-<div class="overflow-auto mx-5 py-1" style="max-height: 350px;">
-  <div class="d-flex flex-column my-1">
-    <% @my_spaceships_bookings.each do |spaceship_booking| %>
-      <div class="border p-3 my-2" style="background-color: #116D6E; border-radius: 5px;">
-        <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
-          <span><%= spaceship_booking.spaceship.name %> <%= spaceship_booking.spaceship.model %></span>
-        </h6>
-      </div>
-
-      <div class="details-box" style="display: none;">
-        <div class="bookings-page-content d-flex justify-content-center align-items-center p-3"
-          style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url('<%= url_for(spaceship_booking.spaceship.photo) %>');">
-
-            <span>
-             <%= spaceship_booking.start_date %>
-             <%= spaceship_booking.end_date %>
-             <%= spaceship_booking.status %>
-             <%= link_to "Accept", booking_confirm_path(spaceship_booking) %>
-             <%= link_to "Decline", booking_decline_path(spaceship_booking) %>
-            </span>
-
-        </div>
-
-      </div>
-    <% end %>
+  <div class="details-box" style="display: none; max-width: 450px;">
+    <%= render 'spaceships/form' %>
   </div>
 </div>
 
 <%# Necessary JavaScript to make magic happen %>
-
 <script>
   $(document).ready(function() {
     $(".spaceship-name-toggle").click(function() {

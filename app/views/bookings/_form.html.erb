@@ -2,14 +2,17 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-
+  <div class="form-inputs d-flex flex-column align-items-center">
     <%= f.input :start_date,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
+                as: :string,
+                input_html: { data: { controller: "datepicker" },
+                            style: "width: 135px;",
+                            placeholder: "From:" } %>
     <%= f.input :end_date,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
+                as: :string,
+                input_html: { data: { controller: "datepicker" },
+                            style: "width: 135px;",
+                            placeholder: "Until:" } %>
   </div>
   <div class="form-actions">
     <%= f.button :submit %>
