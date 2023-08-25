@@ -84,7 +84,7 @@
         <% @spaceships.each do |spaceship| %>
           <div class="border p-3 my-2" style="background-color: #445069; border-radius: 5px;">
             <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
-              <span><%= spaceship.name %> <%= spaceship.model %></span>
+              <span><%= spaceship.name %> - <%= spaceship.model %></span>
             </h6>
           </div>
 
@@ -94,7 +94,6 @@
               url('<%= url_for(spaceship.photo) %>');">
 
                 <span>
-                  <p style="margin-bottom: 0px;">The Profile</p>
                   <p><span style="color: #4477CE;"><%= spaceship.description %></span></p>
                   <p>Daily Rate: <span style="color: #4477CE;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
 
@@ -194,7 +193,7 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
   <div>
     <h6 class="spaceship-name-toggle d-flex justify-content-center py-2">
-      <span>List your Spaceship<% @spaceship = Spaceship.new %></span>
+      <span>Offer your Spaceship<% @spaceship = Spaceship.new %></span>
     </h6>
   </div>
 

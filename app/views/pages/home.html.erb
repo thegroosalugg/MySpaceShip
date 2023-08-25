@@ -1,5 +1,4 @@
-
-<h1 class="mt-2">Welcome to Space, may I take your order?</h1>
+<h1 class="mt-2">Welcome to Space, book your next journey</h1>
   <%= render "shared/searchbar" %>
 <div class="container overflow-auto" style="max-height: 1200px;">
   <div class="row">
@@ -8,7 +7,7 @@
         <%= link_to spaceship_path(spaceship), class: "card space-card m-4", style: "background-color: #F6F4EB; border-radius: 10px; min-width: 300px; text-decoration: none;" do %>
           <div class="d-flex flex-column" style="background-color: #222; border-radius: 10px; color: #FFF;">
             <%= image_tag spaceship.photo, class: "card-img-top spaceship-image" %>
-            <h6 class="mt-3"><%= "#{spaceship.name} #{spaceship.model}" %></h6>
+            <h6 class="mt-3"><%= "#{spaceship.name} - #{spaceship.model}" %></h6>
             <div class="overflow-auto" style="max-height: 80px;">
               <p class="card-text p-3 my-1 text-center" style="font-size: 13px;"><%= spaceship.description %></p>
             </div>
