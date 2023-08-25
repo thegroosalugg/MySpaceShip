@@ -16,7 +16,13 @@
     <div class="overflow-auto mx-5 py-1" style="max-height: 350px; min-width: 350px;">
       <div class="d-flex flex-column my-1">
         <% @my_bookings.each do |booking| %>
-          <div class="border p-3 my-2" style="background-color: #D65A31; border-radius: 5px;">
+          <% if booking.status == "accepted" %>
+            <div class="border p-3 my-2" style="background-color: #28a745; border-radius: 5px;">
+          <% elsif booking.status == "rejected" %>
+            <div class="border p-3 my-2" style="background-color: #dc3545; border-radius: 5px;">
+          <% else booking.status == "accepted" %>
+            <div class="border p-3 my-2" style="background-color: #D65A31; border-radius: 5px;">
+          <% end %>
             <h6 class="spaceship-name-toggle d-flex justify-content-between pt-2">
               <div class="d-flex flex-column">
                 <span><%= booking.spaceship.name %></span>
