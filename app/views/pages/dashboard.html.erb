@@ -34,9 +34,13 @@
               style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
               url('<%= url_for(booking.spaceship.photo) %>');">
                 <span>
-                  <span style="color: #FF6000;">
-                    <h6><%= booking.spaceship.name %></h6>
-                    <h6><%= booking.spaceship.model %></h6>
+
+                  <% booked_ship = Spaceship.find(booking.spaceship_id)  %>
+                  <% owner = User.find(booked_ship.user_id) %>
+
+                  <span>
+                    <h6>Owner:</h6>
+                    <span style="color: #FF6000;"><h6><%= owner.email %></h6></span>
                   </span>
 
                   <h6>Status:</h6>
@@ -48,6 +52,7 @@
                     <span style="color: #FF6000;">
                     <% end %>
                   <h6><%= booking.status %></h6>
+
                     </span>
                 </span>
                 <span style="color: #FAF0E6;">
