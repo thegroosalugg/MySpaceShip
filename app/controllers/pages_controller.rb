@@ -21,6 +21,7 @@ class PagesController < ApplicationController
     @my_spaceships_bookings = Booking.joins(:spaceship).where(spaceships: { user_id: current_user.id })
   end
 
+  
   def confirm
     @booking = Booking.find(params[:booking_id])
     @booking.status = "accepted"
