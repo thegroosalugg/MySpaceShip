@@ -128,4 +128,18 @@ a:hover, input[type="submit"][name="commit"]:hover {
 .form-control::placeholder {
   color: #999999; /* Choose an even lighter color here */
   opacity: 0.8;   /* Adjust the opacity to make it more faded */
+  text-align: center;
+}
+.form-control {
+  border: none;
+}
+
+// search bar
+.search-bar {
+  border-radius: 20px 0 0 20px;
+}
+.search-button {
+  border-radius: 0 20px 20px 0;
+  color: white;
+  margin-left: -1px;
 }
