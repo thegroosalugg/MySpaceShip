@@ -16,7 +16,13 @@
     <div class="overflow-auto mx-5 py-1" style="max-height: 350px; min-width: 350px;">
       <div class="d-flex flex-column my-1">
         <% @my_bookings.each do |booking| %>
-          <div class="border p-3 my-2" style="background-color: #D65A31; border-radius: 5px;">
+          <% if booking.status == "accepted" %>
+            <div class="border p-3 my-2" style="background-color: #28a745; border-radius: 5px;">
+          <% elsif booking.status == "rejected" %>
+            <div class="border p-3 my-2" style="background-color: #dc3545; border-radius: 5px;">
+          <% else booking.status == "accepted" %>
+            <div class="border p-3 my-2" style="background-color: #D65A31; border-radius: 5px;">
+          <% end %>
             <h6 class="spaceship-name-toggle d-flex justify-content-between pt-2">
               <div class="d-flex flex-column">
                 <span><%= booking.spaceship.name %></span>
@@ -84,7 +90,7 @@
         <% @spaceships.each do |spaceship| %>
           <div class="border p-3 my-2" style="background-color: #445069; border-radius: 5px;">
             <h6 class="spaceship-name-toggle d-flex justify-content-center pt-2">
-              <span><%= spaceship.name %> <%= spaceship.model %></span>
+              <span><%= spaceship.name %> - <%= spaceship.model %></span>
             </h6>
           </div>
 
@@ -94,7 +100,6 @@
               url('<%= url_for(spaceship.photo) %>');">
 
                 <span>
-                  <p style="margin-bottom: 0px;">The Profile</p>
                   <p><span style="color: #4477CE;"><%= spaceship.description %></span></p>
                   <p>Daily Rate: <span style="color: #4477CE;"><i class="fa-solid fa-dollar-sign"></i><%= spaceship.daily_rate %></span></p>
 
@@ -109,7 +114,7 @@
                       <%= f.input :name, placeholder: 'USS Enterprise'%>
                       <%= f.input :model, placeholder: 'Millenium Falcon' %>
                       <%= f.input :description, placeholder: 'Please tell us more about your craft' %>
-                      <%= f.input :daily_rate, as: :float, placeholder: 'Please enter your daily rate' %>
+                      <%= f.input :daily_rate, as: :float, placeholder: 'Your daily rate' %>
                       <%= f.button :submit %>
                     <% end %>
                   </div>
@@ -194,7 +199,7 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
   <div>
     <h6 class="spaceship-name-toggle d-flex justify-content-center py-2">
-      <span>List your Spaceship<% @spaceship = Spaceship.new %></span>
+      <span>Offer your Spaceship<% @spaceship = Spaceship.new %></span>
     </h6>
   </div>
 
