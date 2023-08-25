@@ -26,7 +26,7 @@ class SpaceshipsController < ApplicationController
       redirect_to dashboard_path
     else
       # render needs to render dashboard. Currently causes issues
-      render :new, status: :unprocessable_entity
+      redirect_to dashboard_path
     end
   end
 
@@ -39,7 +39,7 @@ class SpaceshipsController < ApplicationController
       redirect_to dashboard_path
     else
       # render needs to render dashboard. Currently causes issues
-      render :edit, status: :unprocessable_entity
+      redirect_to dashboard_path
     end
   end
 
