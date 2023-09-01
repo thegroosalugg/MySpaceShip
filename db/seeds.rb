@@ -38,6 +38,21 @@ spaceship_urls = [
   "https://res.cloudinary.com/ddynviqg1/image/upload/v1692700093/Spaceships/dwight-mann-tillen-soskil-3_yka8hq.jpg"
 ]
 
+# spaceship_urls = [
+#   "/app/assets/images/spaceships/spaceship_01.jpg",
+#   "/app/assets/images/spaceships/spaceship_02.jpg",
+#   "/app/assets/images/spaceships/spaceship_03.jpg",
+#   "/app/assets/images/spaceships/spaceship_04.jpg",
+#   "/app/assets/images/spaceships/spaceship_05.jpg",
+#   "/app/assets/images/spaceships/spaceship_06.jpg",
+#   "/app/assets/images/spaceships/spaceship_07.jpg",
+#   "/app/assets/images/spaceships/spaceship_08.jpg",
+#   "/app/assets/images/spaceships/spaceship_09.jpg",
+#   "/app/assets/images/spaceships/spaceship_10.jpg",
+#   "/app/assets/images/spaceships/spaceship_11.jpg",
+#   "/app/assets/images/spaceships/spaceship_12.jpg"
+# ]
+
 spaceship_urls.each do |url|
   new_spaceship = Spaceship.create(
     name: Faker::Space.constellation,
